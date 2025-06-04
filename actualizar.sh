@@ -1,17 +1,29 @@
 #!/bin/bash
 
-# Directorio del proyecto
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$DIR"
+# Ruta al directorio del proyecto
+PROJECT_DIR="/home/pi/lab/api"
 
-echo "🔄 Haciendo pull de cambios..."
+echo "📥 Actualizando repositorio..."
+cd "$PROJECT_DIR" || exit 1
 git pull
 
-echo "📦 Actualizando dependencias (si aplica)..."
-source api/venv/bin/activate
-pip install -r api/requirements.txt
+echo "🐍 Verificando entorno virtual..."
+if [ ! -d "venv" ]; then
+  echo "🟡 Entorno virtual no encontrado. Creando..."
+  python3 -m venv venv
+fi
 
-echo "🔁 Reiniciando servicio lab_api.service..."
+echo "🧪 Activando entorno virtual..."
+source venv/bin/activate
+
+echo "📦 Actualizando pip y generando requirements.txt..."
+pip install --upgrade pip
+pip freeze > requirements.txt
+
+echo "📦 Instalando dependencias..."
+pip install -r requirements.txt
+
+echo "🔁 Reiniciando servicio lab_api..."
 sudo systemctl restart lab_api.service
 
-echo "✅ Proyecto actualizado y servicio reiniciado"
+echo "✅ Actualización completa."
