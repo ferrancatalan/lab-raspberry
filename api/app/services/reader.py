@@ -1,5 +1,6 @@
 import os
 import json
+from fastapi import HTTPException
 
 home_dir = os.path.expanduser("~") 
 BASE_DIR = os.path.join(home_dir, "lab/data/leer-google-calc/")
