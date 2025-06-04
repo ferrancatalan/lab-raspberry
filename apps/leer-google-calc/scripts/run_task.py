@@ -17,8 +17,12 @@ client = autenticar(f"{home_dir}/{config['google']['service_account_file']}")
 
 # Procesar cada hoja
 for hoja in config['sheets']:
+    print(f"Procesando hoja: {hoja['nombre']} (ID: {hoja['id']})")
     datos = procesar_hoja(client, hoja['id'])
     ruta_salida = f"{home_dir}/lab/data/leer-google-calc/{hoja['nombre']}.json"
     os.makedirs(os.path.dirname(ruta_salida), exist_ok=True)
     with open(ruta_salida, "w", encoding="utf-8") as f:
         json.dump(datos, f, ensure_ascii=False, indent=2)
+    print(f"Datos guardados en: {ruta_salida}")
+
+print("Proceso finalizado.")
