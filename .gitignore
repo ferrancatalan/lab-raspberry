@@ -1,0 +1,46 @@
+# Entornos virtuales
+venv/
+ENV/
+env/
+
+# Archivos Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configuración local
+*.env
+*.yaml
+*.yml
+config.yaml
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos de bases de datos temporales
+*.sqlite3
+*.db
+
+# Archivos JSON generados automáticamente
+*.json
+
+# Carpetas ocultas de editores
+.vscode/
+.idea/
+
+# Archivos de prueba o temporales
+*.bak
+*.swp
+*.tmp
+
+# Archivos de paquetes y distribución
+dist/
+build/
+*.egg-info/
+
+# Archivos del sistema de Linux
+*.pid
