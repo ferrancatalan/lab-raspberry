@@ -16,11 +16,10 @@ fi
 echo "🧪 Activando entorno virtual..."
 source venv/bin/activate
 
-echo "📦 Actualizando pip y generando requirements.txt..."
+echo "📦 Actualizando pip..."
 pip install --upgrade pip
-pip freeze > requirements.txt
 
-echo "📦 Instalando dependencias..."
+echo "📦 Instalando dependencias desde requirements.txt..."
 pip install -r requirements.txt
 
 echo "🔁 Reiniciando servicio lab_api..."
