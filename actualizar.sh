@@ -27,6 +27,9 @@ else
   echo "⚠️ No se encontró $REQUIREMENTS_FILE, omitiendo instalación de dependencias."
 fi
 
+echo "🔄 Recargando configuración de systemd..."
+sudo systemctl daemon-reload
+
 echo "🔁 Reiniciando servicio lab_api..."
 sudo systemctl restart lab_api.service
 
